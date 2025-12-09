@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Widget Background</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .tilted {
+      transform: perspective(1200px) rotateZ(18deg);
+    }
+
+    .card {
+      background: #111;
+      border-radius: 18px;
+      padding: 20px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card img {
+      width: 60%;
+      height: 60%;
+      opacity: 0.9;
+    }
+
+    #icon-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 180px);
+      grid-template-rows: repeat(4, 180px);
+      grid-template-areas:
+        "a b c d"
+        "e f f g"
+        "h f f k"
+        "l m n o";
+      gap: 20px;
+    }
+
+    .card-f{
+      width: 380px;
+      height: 380px;
+    }
+
+    /* Grid bölgələri */
+    .card-a { grid-area: a; }
+    .card-b { grid-area: b; }
+    .card-c { grid-area: c; }
+    .card-d { grid-area: d; }
+
+    .card-e { grid-area: e; }
+    .card-f { grid-area: f; }
+    .card-g { grid-area: g; }
+
+    .card-h { grid-area: h; }
+    .card-k { grid-area: k; }
+
+    .card-l { grid-area: l; }
+    .card-m { grid-area: m; }
+    .card-n { grid-area: n; }
+    .card-o { grid-area: o; }
+  </style>
+</head>
+
+<body class="bg-black text-white overflow-hidden">
+
+  <div class="relative w-full h-screen flex">
+
+    <div class="h-screen w-1/2 flex flex-col justify-center ml-auto gap-6">
+      <h1 class="text-5xl font-bold">3D Widget Background</h1>
+      <p class="text-lg text-gray-400">
+        Sadə HTML, Tailwind CSS və JavaScript istifadə edərək hazırlanmış 3D ikon şəbəkəsi
+      </p>
+    </div>
+
+    <div class="w-[55%] h-full relative overflow-hidden ml-auto">
+
+      <div id="icon-grid" class="absolute top-20 right-0 tilted opacity-80"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const icons = [
+      "https://cdn.simpleicons.org/facebook",
+      "https://cdn.simpleicons.org/google",
+      "https://cdn.simpleicons.org/apple",
+      "https://cdn.simpleicons.org/netflix",
+      "https://cdn.simpleicons.org/github",
+      "https://cdn.simpleicons.org/spotify",
+      "https://cdn.simpleicons.org/airbnb",
+      "https://cdn.simpleicons.org/trello",
+      "https://cdn.simpleicons.org/docker",
+      "https://cdn.simpleicons.org/intel",
+      "https://cdn.simpleicons.org/tesla",
+      "https://cdn.simpleicons.org/twitter",
+      "https://cdn.simpleicons.org/linkedin",
+      "https://cdn.simpleicons.org/figma",
+      "https://cdn.simpleicons.org/behance"
+    ];
+
+    const areas = [
+      "a", "b", "c", "d",
+      "e", "f", "g",
+      "h", "k",
+      "l", "m", "n", "o"
+    ];
+
+    const grid = document.getElementById("icon-grid");
+
+    areas.forEach((area, i) => {
+      const div = document.createElement("div");
+      div.className = `card card-${area}`; 
+      div.innerHTML = `<img src="${icons[i]}" />`;
+      grid.appendChild(div);
+    });
+  </script>
+
+</body>
+
+</html>
